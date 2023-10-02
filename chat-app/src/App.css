@@ -1,3 +1,4 @@
+/* ###################### Register and Login ####################### */
 .container {
   display: flex;
   align-items: center;
@@ -15,7 +16,7 @@
   padding: 20px 60px;
 }
 
-.title {
+.container .card .title {
   color: blue;
 }
 
@@ -51,4 +52,53 @@
   color: white;
   cursor: pointer;
   padding: 10px;
+}
+
+/* ###################### Main ####################### */
+.main {
+  height: 100vh;
+  display: flex;
+}
+
+.main .sidebar {
+  flex: 1;
+  background-color: lightblue;
+}
+
+.main .sidebar .top {
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+  padding: 10px;
+  color: white;
+  align-items: center;
+}
+
+.main .sidebar .top .user {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.main .sidebar .top .title {
+  font-weight: bold;
+}
+
+.main .sidebar .top .user button {
+  background-color: lightblue;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.main .sidebar .top .user img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.main .chat {
+  flex: 2;
 }
