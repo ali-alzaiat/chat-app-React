@@ -1,3 +1,9 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* ###################### Register and Login ####################### */
 .container {
   display: flex;
@@ -62,8 +68,11 @@
 
 .main .sidebar {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   background-color: lightblue;
   overflow: hidden;
+  height: 100%;
 }
 
 .main .sidebar .top {
@@ -138,6 +147,14 @@
   font-weight: bold;
   color: white;
   font-size: 20px;
+}
+
+.main .sidebar .rooms:hover {
+  overflow-y: scroll;
+}
+
+.main .sidebar .rooms {
+  flex: 1;
 }
 
 .main .sidebar .rooms .chat {
