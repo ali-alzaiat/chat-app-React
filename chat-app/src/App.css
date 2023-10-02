@@ -137,9 +137,38 @@
 .main .sidebar .search .result .userName {
   font-weight: bold;
   color: white;
+  font-size: 20px;
 }
 
+.main .sidebar .rooms .chat {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
 
+.main .sidebar .rooms .chat:hover {
+  background-color: blue;
+}
+
+.main .sidebar .rooms .chat img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.main .sidebar .rooms .chat .userName {
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+
+.main .sidebar .rooms .chat .last-message {
+  color: darkgray;
+  font-size: 15px;
+  margin: 0;
+}
 
 .main .chat {
   flex: 3;
