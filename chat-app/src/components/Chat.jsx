@@ -3,7 +3,10 @@ import Input from "./Input";
 
 function Chat() {
     return ( 
-        <div className="chat">
+        <div className="chatMessages">
+            <div className="chatTop">
+                <span>Ali</span>
+            </div>
             <Messages />
             <Input />
         </div>

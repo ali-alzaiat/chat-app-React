@@ -187,6 +187,42 @@ html,body {
   margin: 0;
 }
 
-.main .chat {
+.main .chatMessages {
   flex: 3;
+  position: relative;
+}
+
+.main .chatMessages .chatTop{
+  display: flex;
+  justify-content: space-between;
+  background-color: #5489de;
+  padding: 10px;
+  color: white;
+  align-items: center;
+  height: 30px;
+}
+
+.main .chatMessages .Input {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.main .chatMessages .Input .messageInput{
+  flex: 1;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.main .chatMessages .Input .send{
+  width: 50px;
+  padding: 5px 10px;
+  margin: 5px;
+  color: white;
+  background-color: blue;
+  cursor: pointer;
 }
