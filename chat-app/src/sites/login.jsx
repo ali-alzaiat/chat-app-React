@@ -1,14 +1,23 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     let[username, setUsername] = useState(''); 
     let[password, setpassword] = useState(''); 
+    let navigate = useNavigate();
 
     function loginHandler(){
-        axios.get('')
-        .then((token) => {
-            localStorage.setItem("token",token);
+        axios.get(`http://localhost:8000/user/login/${username}/${password}`)
+        .then((response) => {
+            localStorage.setItem("token",response.data); 
+            navigate('/');        
+        }).catch(err=>{
+            if(err.response.status === 401){
+                alert("'Login failed: Unauthorized'")
+            }else{
+                console.log(err);
+            }
         })
     }
 
