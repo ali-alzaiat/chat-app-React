@@ -14,7 +14,7 @@ function Register() {
                     </label>
                     <button type="submit">Sign Up</button>
                 </div>
-                <span className="footer">Already singed up? Login</span>
+                <span className="footer">Already singed up? <a href="/login">Login</a></span>
             </div>
         </div>
      );

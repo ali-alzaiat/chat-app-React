@@ -2,6 +2,7 @@ import './App.css';
 import Register from './sites/register';
 import Login from './sites/login';
 import Main from './sites/Main';
+import Guard from './components/Guard';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
@@ -9,7 +10,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main />,
+      element: <Guard/>,
+      children: [
+        {
+          path: "/",
+          element: <Main />,
+        },
+      ]
     },
     {
       path: "login",
