@@ -8,7 +8,6 @@ export default function Guard() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log(token);
     axios
       .get('http://localhost:8000/user/verifyToken', {
         headers: {
@@ -16,7 +15,6 @@ export default function Guard() {
         },
       })
       .then((response) => {
-        console.log(response);
         if (!response) {
           navigate('/login');
         } else {
