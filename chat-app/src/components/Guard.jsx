@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../shared/context';
 
 export default function Guard() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {username, setUsername} = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -15,6 +17,8 @@ export default function Guard() {
         },
       })
       .then((response) => {
+        setUsername(response.data.name);
+        console.log(username);
         if (!response) {
           navigate('/login');
         } else {
