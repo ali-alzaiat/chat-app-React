@@ -10,7 +10,6 @@ function Register() {
         .then((data)=>{
             alert("user added");
         }).catch((err)=>{
-            console.log(err.response.status);
             if(err.response.status === 400){
                 alert("Email already exists");
             }else{
