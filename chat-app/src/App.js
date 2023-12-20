@@ -4,6 +4,7 @@ import Login from './sites/login';
 import Main from './sites/Main';
 import Guard from './components/Guard';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { UserProvider } from './shared/context';
 
 function App() {
 
@@ -29,7 +30,9 @@ function App() {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   );
 }
 
