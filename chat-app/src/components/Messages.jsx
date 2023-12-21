@@ -12,7 +12,7 @@ let Messages = forwardRef((props,ref)=>{
     useEffect(()=>{
         let token = localStorage.getItem('token')
         if(receiver){
-            axios.get(`http://localhost:8000/messages/getMessage/${username}/${receiver}`,{
+            axios.get(`https://chat-backend-8dvr.onrender.com/messages/getMessage/${username}/${receiver}`,{
                 headers:{
                     Authorization:`Basic ${token}`
                 }

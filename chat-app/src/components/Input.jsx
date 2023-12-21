@@ -10,7 +10,7 @@ function Input(props) {
 
     let sendHandler = (e)=>{
         setMessageContent(input)
-        axios.post("http://localhost:8000/messages/addMessage",{sender:email,receiver:receiver,text:input},{
+        axios.post("https://chat-backend-8dvr.onrender.com/messages/addMessage",{sender:email,receiver:receiver,text:input},{
             headers:{
                 Authorization:`Basic ${token}`
             }

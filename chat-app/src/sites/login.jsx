@@ -8,7 +8,7 @@ function Login() {
     let navigate = useNavigate();
 
     function loginHandler(){
-        axios.get(`http://localhost:8000/user/login/${username}/${password}`)
+        axios.get(`https://chat-backend-8dvr.onrender.com/user/login/${username}/${password}`)
         .then((response) => {
             localStorage.setItem("token",response.data); 
             navigate('/');        

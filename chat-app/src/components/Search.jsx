@@ -22,7 +22,7 @@ function Search() {
             return;
         }
         let token = localStorage.getItem('token');
-        axios.get(`http://localhost:8000/user/getUser/${searchValue}`, {
+        axios.get(`https://chat-backend-8dvr.onrender.com/user/getUser/${searchValue}`, {
             headers: {
               Authorization: `Basic ${token}`,
             },

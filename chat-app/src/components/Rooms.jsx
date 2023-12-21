@@ -8,7 +8,7 @@ function Rooms() {
     let {username,setReceiver} = useContext(UserContext);
     useEffect(()=>{
         let token = localStorage.getItem('token');
-        axios.get(`http://localhost:8000/messages/getMyMessage/${username}`, {
+        axios.get(`https://chat-backend-8dvr.onrender.com/messages/getMyMessage/${username}`, {
             headers: {
               Authorization: `Basic ${token}`,
             },

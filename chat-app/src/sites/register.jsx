@@ -6,7 +6,7 @@ function Register() {
     let[password,setpassword] = useState('');
     let[email,setemail] = useState('');
     function addUser() {
-        axios.post('http://localhost:8000/user/signup',{"name":username,"password":password,"email":email})
+        axios.post('https://chat-backend-8dvr.onrender.com/user/signup',{"name":username,"password":password,"email":email})
         .then((data)=>{
             alert("user added");
         }).catch((err)=>{

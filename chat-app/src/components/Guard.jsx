@@ -11,7 +11,7 @@ export default function Guard() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-    .get('http://localhost:8000/user/verifyToken', {
+    .get('https://chat-backend-8dvr.onrender.com/user/verifyToken', {
       headers: {
         Authorization: `Basic ${token}`,
       },
