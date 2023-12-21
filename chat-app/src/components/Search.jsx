@@ -5,7 +5,8 @@ import { UserContext } from "../shared/context";
 function Search() {
     let [searchValue,setSearchValue] = useState("");
     let [searchResult,setSearchResult] = useState([]);
-    let {setReceiver,receiver} = useContext(UserContext);
+    let {setReceiver} = useContext(UserContext);
+    let token = localStorage.getItem('token');
     let searchHandler = (e)=>{
         setSearchValue(e.target.value);
     }
@@ -13,9 +14,16 @@ function Search() {
         const selectedUser = e.currentTarget.getAttribute('value');
         setReceiver(selectedUser);
     }
-    useEffect(()=>{console.log(receiver);},[receiver])
     useEffect(()=>{
-        axios.get(`http://localhost:8000/user/getUser/${searchValue}`)
+        if(!searchValue){
+            setSearchResult([]);
+            return;
+        }
+        axios.get(`http://localhost:8000/user/getUser/${searchValue}`, {
+            headers: {
+              Authorization: `Basic ${token}`,
+            },
+          })
         .then((response)=>{
             setSearchResult(response.data);
         }).catch((err)=>{

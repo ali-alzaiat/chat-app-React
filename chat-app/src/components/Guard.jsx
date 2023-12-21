@@ -18,7 +18,6 @@ export default function Guard() {
       })
       .then((response) => {
         setUsername(response.data.name);
-        console.log(username);
         if (!response) {
           navigate('/login');
         } else {
