@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../shared/context";
 import axios from "axios";
 
-function Input() {
+function Input(props) {
     let {setMessageContent,email,receiver} = useContext(UserContext);
     let [input,setInput] = useState('');
     let token = localStorage.getItem("token");
@@ -17,6 +17,7 @@ function Input() {
             console.log(err);
         })
         document.getElementById('messageInput').value = ''
+        props.scroll();
     }
 
     let inputHandler = (e)=>{

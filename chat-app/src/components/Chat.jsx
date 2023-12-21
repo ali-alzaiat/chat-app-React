@@ -1,17 +1,25 @@
 import Messages from "./Messages";
 import Input from "./Input";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { UserContext } from "../shared/context";
 
 function Chat() {
     let {username} = useContext(UserContext);
+    const chatMessagesRef = useRef(null);
+
+    let inputHandler = ()=>{
+        if(chatMessagesRef.current){
+            chatMessagesRef.current.scrollToBottom();
+        }
+    }
+
     return ( 
-        <div className="chatMessages">
+        <div className="chatMessages" id="chatMessages">
             <div className="chatTop">
                 <span>{username}</span>
             </div>
-            <Messages />
-            <Input />
+            <Messages ref={chatMessagesRef}/>
+            <Input scroll={inputHandler}/>
         </div>
      );
 }

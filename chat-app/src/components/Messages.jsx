@@ -1,11 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Message from "./Message";
 import axios from "axios";
 import { UserContext } from "../shared/context";
 
-function Messages() {
-    let {username,receiver} = useContext(UserContext);
+let Messages = forwardRef((props,ref)=>{
+    let {username,receiver,messageContent} = useContext(UserContext);
     let [messageslist,setMessageslist] = useState([]);
+    const chatMessagesRef = useRef(null);
+
     useEffect(()=>{
         let token = localStorage.getItem('token')
         if(receiver){
@@ -20,13 +22,32 @@ function Messages() {
             })
         }
     },[username,receiver])
+
+    useEffect(()=>{
+        if(messageContent){
+            let newMessage = {_id:new Date().toISOString(),content:messageContent,timestamp:new Date().toISOString(),sender:{name:username}};
+            setMessageslist([...messageslist,newMessage]);
+        }
+    },[messageContent]);
+
+    const scrollToBottom = () => {
+        if(chatMessagesRef.current){
+            chatMessagesRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    };
+
+    useImperativeHandle(ref,()=>{
+        scrollToBottom()
+    })
+
     return ( 
         <div className="messages">
             {messageslist.map((message)=>{
                 return (<Message message={message} key={message._id}/>)
             })}
+            <div ref={chatMessagesRef}></div>
         </div>
      );
-}
+})
 
 export default Messages;
