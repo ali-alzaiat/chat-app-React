@@ -6,28 +6,29 @@ import { UserContext } from '../shared/context';
 export default function Guard() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const {setUsername} = useContext(UserContext);
+  const {setUsername,setEmail} = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-      .get('http://localhost:8000/user/verifyToken', {
-        headers: {
-          Authorization: `Basic ${token}`,
-        },
-      })
-      .then((response) => {
-        setUsername(response.data.name);
-        if (!response) {
-          navigate('/login');
-        } else {
-          setIsLoggedIn(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    .get('http://localhost:8000/user/verifyToken', {
+      headers: {
+        Authorization: `Basic ${token}`,
+      },
+    })
+    .then((response) => {
+      setUsername(response.data.name);
+      setEmail(response.data.email);
+      if (!response) {
         navigate('/login');
-      });
+      } else {
+        setIsLoggedIn(true);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      navigate('/login');
+    });
   }, [navigate,setUsername]);
 
   if (!isLoggedIn) {
