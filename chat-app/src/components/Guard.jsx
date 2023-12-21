@@ -6,7 +6,7 @@ import { UserContext } from '../shared/context';
 export default function Guard() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const {username, setUsername} = useContext(UserContext);
+  const {setUsername} = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -28,7 +28,7 @@ export default function Guard() {
         console.log(err);
         navigate('/login');
       });
-  }, [navigate]);
+  }, [navigate,setUsername]);
 
   if (!isLoggedIn) {
     return null; // or any loading indicator or fallback component
