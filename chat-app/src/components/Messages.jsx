@@ -37,7 +37,7 @@ let Messages = forwardRef((props,ref)=>{
 
     const scrollToBottom = () => {
         if(chatMessagesRef.current){
-            chatMessagesRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
         }
     };
 
@@ -47,11 +47,10 @@ let Messages = forwardRef((props,ref)=>{
     })
 
     return ( 
-        <div className="messages">
+        <div className="messages" ref={chatMessagesRef}>
             {messageslist.map((message)=>{
                 return (<Message message={message} key={message._id}/>)
             })}
-            <div ref={chatMessagesRef}></div>
         </div>
      );
 })
