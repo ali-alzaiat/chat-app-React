@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../shared/context";
 import axios from "axios";
+import { socket } from "../shared/socket";
 
 function Input(props) {
-    let {setMessageContent,email,receiver} = useContext(UserContext);
+    let {setMessageContent,email,receiver,username} = useContext(UserContext);
     let [input,setInput] = useState('');
     let token = localStorage.getItem("token");
 
@@ -18,6 +19,8 @@ function Input(props) {
         })
         document.getElementById('messageInput').value = ''
         props.scroll();
+        let room = (username>receiver)?username+receiver:receiver+username;
+        socket.emit('message',room,input,username);
     }
 
     let inputHandler = (e)=>{

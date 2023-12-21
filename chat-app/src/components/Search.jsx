@@ -1,17 +1,20 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../shared/context";
+import { socket } from "../shared/socket";
 
 function Search() {
     let [searchValue,setSearchValue] = useState("");
     let [searchResult,setSearchResult] = useState([]);
-    let {setReceiver} = useContext(UserContext);
+    let {setReceiver,username} = useContext(UserContext);
     let searchHandler = (e)=>{
         setSearchValue(e.target.value);
     }
     let recevierHandler = (e)=>{
         const selectedUser = e.currentTarget.getAttribute('value');
         setReceiver(selectedUser);
+        let room = (username>selectedUser)?username+selectedUser:selectedUser+username;
+        socket.emit('user-connected',room,username)
     }
     useEffect(()=>{
         if(!searchValue){

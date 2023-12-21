@@ -2,6 +2,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useStat
 import Message from "./Message";
 import axios from "axios";
 import { UserContext } from "../shared/context";
+import { socket } from "../shared/socket";
 
 let Messages = forwardRef((props,ref)=>{
     let {username,receiver,messageContent} = useContext(UserContext);
@@ -29,6 +30,10 @@ let Messages = forwardRef((props,ref)=>{
             setMessageslist([...messageslist,newMessage]);
         }
     },[messageContent]);
+    
+    useImperativeHandle(ref,()=>{
+        scrollToBottom()
+    })
 
     const scrollToBottom = () => {
         if(chatMessagesRef.current){
@@ -36,8 +41,9 @@ let Messages = forwardRef((props,ref)=>{
         }
     };
 
-    useImperativeHandle(ref,()=>{
-        scrollToBottom()
+    socket.on("message",(message,userName)=>{
+        let newMessage = {_id:new Date().toISOString(),content:message,timestamp:new Date().toISOString(),sender:{name:userName}};
+        setMessageslist([...messageslist,newMessage]);
     })
 
     return ( 

@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../shared/context";
 import axios from "axios";
+import { socket } from "../shared/socket";
 
 function Rooms() {
     let [chats,setChats] = useState([]);
@@ -22,6 +23,8 @@ function Rooms() {
     let recevierHandler = (e)=>{
         const selectedUser = e.currentTarget.getAttribute('value');
         setReceiver(selectedUser);
+        let room = (username>selectedUser)?username+selectedUser:selectedUser+username;
+        socket.emit('user-connected',room,username)
     }
 
     return ( 
