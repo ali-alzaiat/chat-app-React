@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     let[username,setUsername] = useState('');
     let[password,setpassword] = useState('');
     let[email,setemail] = useState('');
+    let navegator = useNavigate();
     function addUser() {
         axios.post('https://chat-backend-8dvr.onrender.com/user/signup',{"name":username,"password":password,"email":email})
         .then((data)=>{
-            alert("user added");
+            navegator('/login')
         }).catch((err)=>{
             if(err.response.status === 400){
                 alert("Email already exists");
