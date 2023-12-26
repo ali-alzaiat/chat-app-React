@@ -5,14 +5,14 @@ import { UserContext } from "../shared/context";
 import { socket } from "../shared/socket";
 
 let Messages = forwardRef((props,ref)=>{
-    let {username,receiver,messageContent} = useContext(UserContext);
+    let {username,receiver,messageContent,email} = useContext(UserContext);
     let [messageslist,setMessageslist] = useState([]);
     const chatMessagesRef = useRef(null);
 
     useEffect(()=>{
         let token = localStorage.getItem('token')
         if(receiver){
-            axios.get(`https://chat-backend-8dvr.onrender.com/messages/getMessage/${username}/${receiver}`,{
+            axios.get(`https://chat-backend-8dvr.onrender.com/messages/getMessage/${email}/${receiver}`,{
                 headers:{
                     Authorization:`Basic ${token}`
                 }
@@ -22,7 +22,7 @@ let Messages = forwardRef((props,ref)=>{
                 console.log(err);
             })
         }
-    },[username,receiver])
+    },[email,receiver])
 
     useEffect(()=>{
         if(messageContent){
