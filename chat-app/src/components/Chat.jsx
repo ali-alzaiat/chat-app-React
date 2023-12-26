@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import { UserContext } from "../shared/context";
 
 function Chat() {
-    let {username} = useContext(UserContext);
+    let {receiverName} = useContext(UserContext);
     const chatMessagesRef = useRef(null);
 
     let inputHandler = ()=>{
@@ -16,7 +16,7 @@ function Chat() {
     return ( 
         <div className="chatMessages" id="chatMessages">
             <div className="chatTop">
-                <span>{username}</span>
+                <span>{(receiverName)?receiverName:''}</span>
             </div>
             <Messages ref={chatMessagesRef}/>
             <Input scroll={inputHandler}/>
