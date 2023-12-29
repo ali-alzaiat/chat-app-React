@@ -1,0 +1,9 @@
+.top .user .hideButton {
+    background-color:transparent;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+}

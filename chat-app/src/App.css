@@ -62,7 +62,7 @@ html,body {
 
 /* ###################### Main ####################### */
 .main {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
 }
 
@@ -88,13 +88,14 @@ html,body {
   display: flex;
   gap: 5px;
   align-items: center;
+  margin-left: auto;
 }
 
 .main .sidebar .top .title {
   font-weight: bold;
 }
 
-.main .sidebar .top .user button {
+.main .sidebar .top .user .logoutButton {
   background-color: lightblue;
   color: white;
   border: none;
@@ -305,12 +306,12 @@ html,body {
     display: none;
   }
   
-  .main .sidebar .top .user button {
+  /* .main .sidebar .top .user .logoutButton {
     position: absolute;
     right: 10px;
     z-index: 2;
     background-color: blue;
-  }
+  } */
   
   .main .sidebar .top .user img {
     width: 30px;
@@ -318,13 +319,26 @@ html,body {
     border-radius: 50%;
     object-fit: cover;
   }
+  
+  .main {
+    display: block;
+    position: relative;
+    max-width: 100%;
+  }
 
   .main .chatMessages {
-    flex: 7;
+    /* flex: 1; */
+    height: 100dvh;
   }
   
   .main .sidebar{
-    flex:4;
+    /* flex:2; */
+    /* min-width: 150px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    z-index: 1;
   }
 
   .main .sidebar .rooms .chat img {
@@ -335,6 +349,16 @@ html,body {
   .main .sidebar .search .result img {
     width: 35px;
     height: 35px;
+  }
+}
+
+@media screen and (max-width:720px) {
+  .main .chatMessages {
+    flex: 2;
+  }
+  
+  .main .sidebar{
+    flex:1;
   }
 }
 
