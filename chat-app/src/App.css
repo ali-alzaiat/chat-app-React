@@ -306,13 +306,6 @@ html,body {
     display: none;
   }
   
-  /* .main .sidebar .top .user .logoutButton {
-    position: absolute;
-    right: 10px;
-    z-index: 2;
-    background-color: blue;
-  } */
-  
   .main .sidebar .top .user img {
     width: 30px;
     height: 30px;
@@ -327,13 +320,18 @@ html,body {
   }
 
   .main .chatMessages {
-    /* flex: 1; */
     height: 100dvh;
   }
   
+  .main .chatMessages .messages{
+    overflow-y: scroll;
+  }
+  
+  .main .sidebar .rooms {
+    overflow-y: scroll;
+  }
+
   .main .sidebar{
-    /* flex:2; */
-    /* min-width: 150px; */
     position: absolute;
     top: 0;
     left: 0;
