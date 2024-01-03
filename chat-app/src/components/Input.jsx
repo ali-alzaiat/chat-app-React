@@ -17,10 +17,10 @@ function Input(props) {
         }).catch((err)=>{
             console.log(err);
         })
+        let room = (email>receiver)?email+receiver:receiver+email;
+        socket.emit('message',room,input,username);
         document.getElementById('messageInput').value = ''
         props.scroll();
-        let room = (username>receiver)?username+receiver:receiver+username;
-        socket.emit('message',room,input,username);
     }
 
     let inputHandler = (e)=>{

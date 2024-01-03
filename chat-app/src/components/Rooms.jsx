@@ -24,7 +24,7 @@ function Rooms() {
         const selectedUser = e.currentTarget.getAttribute('value');
         setReceiver(selectedUser);
         setReceiverName(e.currentTarget.getAttribute('receiver'));
-        let room = (username>selectedUser)?username+selectedUser:selectedUser+username;
+        let room = (email>selectedUser)?email+selectedUser:selectedUser+email;
         socket.emit('user-connected',room,username)
     }
 

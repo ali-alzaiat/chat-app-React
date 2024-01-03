@@ -30,6 +30,11 @@ let Messages = forwardRef((props,ref)=>{
             setMessageslist([...messageslist,newMessage]);
         }
     },[messageContent]);
+   
+    socket.on("message",(message,userName)=>{
+        let newMessage = {_id:new Date().toISOString(),content:message,timestamp:new Date().toISOString(),sender:{name:userName}};
+        setMessageslist([...messageslist,newMessage]);
+    })
     
     useImperativeHandle(ref,()=>{
         scrollToBottom()
@@ -40,11 +45,6 @@ let Messages = forwardRef((props,ref)=>{
             chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
         }
     };
-
-    socket.on("message",(message,userName)=>{
-        let newMessage = {_id:new Date().toISOString(),content:message,timestamp:new Date().toISOString(),sender:{name:userName}};
-        setMessageslist([...messageslist,newMessage]);
-    })
 
     return ( 
         <div className="messages" ref={chatMessagesRef}>
