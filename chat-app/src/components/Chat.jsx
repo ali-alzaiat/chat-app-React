@@ -25,7 +25,7 @@ function Chat() {
                 <span>{(receiverName)?receiverName:''}</span>
             </div>
             <Messages ref={chatMessagesRef}/>
-            <Input scroll={inputHandler}/>
+            {receiverName && <Input scroll={inputHandler}/>}
         </div>
      );
 }
