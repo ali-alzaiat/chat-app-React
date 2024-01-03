@@ -70,16 +70,17 @@ html,body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
+  background-color: lightskyblue;
   overflow: hidden;
   height: 100%;
   z-index: 1;
+  box-shadow: 2px 0px 2px -2px;
 }
 
 .main .sidebar .top {
   display: flex;
   justify-content: space-between;
-  background-color: blue;
+  background-color: deepskyblue;
   padding: 10px;
   color: white;
   align-items: center;
@@ -199,7 +200,7 @@ html,body {
 .main .chatMessages .chatTop{
   display: flex;
   justify-content: space-between;
-  background-color: #5489de;
+  background-color: deepskyblue;
   padding: 10px;
   color: white;
   align-items: center;
@@ -212,7 +213,7 @@ html,body {
   flex: 0 50px;
   justify-content: center;
   align-items: center;
-  background-color: #5489de;
+  background-color: lightslategrey;
   /* height: 50px; */
 }
 
@@ -231,7 +232,7 @@ html,body {
   padding: 5px 10px;
   margin: 5px;
   color: white;
-  background-color: blue;
+  background-color: deepskyblue;
   border: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -241,7 +242,7 @@ html,body {
 
 .main .chatMessages .messages{
   padding: 10px 20px;
-  background-color: #dae0eb;
+  background-color: #e9f5ff;
   flex: 1;
   overflow: hidden;
 }
@@ -280,7 +281,7 @@ html,body {
 }
 
 .main .chatMessages .messages .message .messageContent{
-  background-color: lightblue;
+  background-color: deepskyblue;
   max-width: 80%;
   border: none;
   border-radius: 0px 25px 25px 25px;
