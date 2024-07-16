@@ -40,7 +40,6 @@ npm install
 
 3. Run the Application
 ```
-cd ../chat-app-React
 npm start
 ```
 
