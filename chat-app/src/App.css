@@ -2,6 +2,18 @@ html,body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.text-center {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ###################### Register and Login ####################### */
